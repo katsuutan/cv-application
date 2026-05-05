@@ -62,7 +62,7 @@ function Experience() {
                         />
                     </label>
 
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
                 </>
             ) : ( // Display Mode
                 <>
@@ -71,7 +71,7 @@ function Experience() {
                     <p>{experience.duties}</p>
                     <p>{experience.dateFrom}</p>
                     <p>{experience.dateUntil}</p>
-                    <button onClick={handleEdit}>Edit</button>
+                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
                 </>
             )}
         </div>

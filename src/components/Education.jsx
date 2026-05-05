@@ -47,14 +47,14 @@ function Education() {
                         />
                     </label>
                     
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
                 </>            
             ) : ( // Display Mode
                 <>
                     <p>{education.schoolName}</p>
                     <p>{education.titleStudy}</p>
                     <p>{education.dateStudy}</p>
-                    <button onClick={handleEdit}>Edit</button>
+                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
                 </>
             )}
         </div>

@@ -47,14 +47,14 @@ function GeneralInfo() {
                         />
                     </label>
                     
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
                 </>            
             ) : ( // Display Mode
                 <>
                     <p>{generalInfo.name}</p>
                     <p>{generalInfo.email}</p>
                     <p>{generalInfo.phone}</p>
-                    <button onClick={handleEdit}>Edit</button>
+                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
                 </>
             )}
         </div>
