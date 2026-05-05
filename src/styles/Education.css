@@ -1,3 +1,14 @@
 .education {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.education-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.education-top-row h3 {
+    font-size: 1.1rem;
+    color: #2c3e50;
 }

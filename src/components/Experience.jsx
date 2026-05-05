@@ -19,11 +19,24 @@ function Experience() {
         setIsEditing(true);
     };
 
+    const formatDate = (dateString) => {
+        if (!dateString) return '';
+        const date = new Date(dateString + 'T00:00:00');
+        return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    };
+
     // if isEditing, show input fields
     // if not isEditing, show text display
     return (
         <div className='experience'>
-            <h2>Experience</h2>
+            <div className="section-header">
+                <h2>Experience</h2>
+                {isEditing ? (
+                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
+                ) : (
+                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
+                )}
+            </div>
             {isEditing ? ( // Editing Mode
                 <>
                     <label>
@@ -50,6 +63,7 @@ function Experience() {
                     <label>
                         Date From:{' '}
                         <input
+                            type='date'
                             value={experience.dateFrom}
                             onChange={(e) => setExperience({ ...experience, dateFrom: e.target.value })}
                         />
@@ -57,22 +71,20 @@ function Experience() {
                     <label>
                         Date Until:{' '}
                         <input
+                            type='date'
                             value={experience.dateUntil}
                             onChange={(e) => setExperience({ ...experience, dateUntil: e.target.value })}
                         />
                     </label>
-
-                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
                 </>
             ) : ( // Display Mode
-                <>
-                    <p>{experience.companyName}</p>
-                    <p>{experience.positionTitle}</p>
+                <div className='experience-display'>
+                    <div className='experience-top-row'>
+                        <h3>{experience.positionTitle} at {experience.companyName}</h3>
+                        <p className='display-date'>{formatDate(experience.dateFrom)} - {formatDate(experience.dateUntil)}</p>
+                    </div>
                     <p>{experience.duties}</p>
-                    <p>{experience.dateFrom}</p>
-                    <p>{experience.dateUntil}</p>
-                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
-                </>
+                </div>
             )}
         </div>
     );

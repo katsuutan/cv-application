@@ -69,3 +69,21 @@ button {
   background-color: #3498db;
   color: white;
 }
+
+.display-label {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.display-date {
+    font-size: 0.9rem;
+    color: #888;
+}

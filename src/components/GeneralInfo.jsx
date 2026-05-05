@@ -22,7 +22,15 @@ function GeneralInfo() {
 
     return (
         <div className='general-info'>
-            <h2>General Information</h2>
+            <div className="section-header">
+                <h2>General Information</h2>
+                {isEditing ? (
+                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
+                ) : (
+                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
+                )}
+            </div>
+            
             {isEditing ? ( // Editing Mode
                 <>
                     <label>
@@ -35,6 +43,7 @@ function GeneralInfo() {
                     <label>
                         Email:{' '}
                         <input
+                            type='email'
                             value={generalInfo.email} 
                             onChange={(e) => setGeneralInfo({ ...generalInfo, email: e.target.value })}   
                         />
@@ -42,20 +51,21 @@ function GeneralInfo() {
                     <label>
                         Phone:{' '}
                         <input
+                            type='tel'
                             value={generalInfo.phone}
                             onChange={(e) => setGeneralInfo({ ...generalInfo, phone: e.target.value })}
                         />
                     </label>
                     
-                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
                 </>            
             ) : ( // Display Mode
-                <>
-                    <p>{generalInfo.name}</p>
-                    <p>{generalInfo.email}</p>
-                    <p>{generalInfo.phone}</p>
-                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
-                </>
+                <div className="general-info-display">
+                    <h1>{generalInfo.name}</h1>
+                    <div className="contact-details">
+                        <p>📧 {generalInfo.email}</p>
+                        <p>📞 {generalInfo.phone}</p>
+                    </div>
+                </div>
             )}
         </div>
     );

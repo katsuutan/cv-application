@@ -17,12 +17,25 @@ function Education() {
         setIsEditing(true);
     };
 
+    const formatDate = (dateString) => {
+        if (!dateString) return '';
+        const date = new Date(dateString + 'T00:00:00');
+        return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    };
+
     // if isEditing, show input fields
     // if not isEditing, show text display
 
     return (
         <div className='education'>
-            <h2>Education</h2>
+            <div className="section-header">
+                <h2>Education</h2>
+                {isEditing ? (
+                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
+                ) : (
+                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
+                )}
+            </div>
             {isEditing ? ( // Editing Mode
                 <>
                     <label>
@@ -42,20 +55,20 @@ function Education() {
                     <label>
                         Date of Study:{' '}
                         <input
+                            type='date'
                             value={education.dateStudy}
                             onChange={(e) => setEducation({ ...education, dateStudy: e.target.value })}
                         />
                     </label>
-                    
-                    <button className="submit-btn" onClick={handleSubmit}>Submit</button>
                 </>            
             ) : ( // Display Mode
-                <>
-                    <p>{education.schoolName}</p>
-                    <p>{education.titleStudy}</p>
-                    <p>{education.dateStudy}</p>
-                    <button className="edit-btn" onClick={handleEdit}>Edit</button>
-                </>
+                <div className="education-display">
+                    <div className="education-top-row">
+                        <h3>{education.schoolName}</h3>
+                        <p className="display-date">{formatDate(education.dateStudy)}</p>
+                    </div>
+                    <p className="display-label">{education.titleStudy}</p>
+                </div>
             )}
         </div>
     );
