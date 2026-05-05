@@ -13,7 +13,7 @@ A React-based CV/résumé builder where users can input and edit their general i
 - Date formatting for education and experience entries
 
 ## Live Demo
-[View on Vercel](your-vercel-link-here)
+[View on Vercel](https://cv-application-hazel-zeta.vercel.app/)
 
 ## What I Learned
 - Managing state with useState
